@@ -929,23 +929,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 869063937949789435, guid: ad6d6baec692b3045956c291cec0aeb2, type: 3}
       propertyPath: orthographic size
-      value: 96
+      value: 43.2
       objectReference: {fileID: 0}
     - target: {fileID: 869063937949789435, guid: ad6d6baec692b3045956c291cec0aeb2, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.14125562
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 869063937949789435, guid: ad6d6baec692b3045956c291cec0aeb2, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.11553785
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 869063937949789435, guid: ad6d6baec692b3045956c291cec0aeb2, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.7174888
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 869063937949789435, guid: ad6d6baec692b3045956c291cec0aeb2, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.76494026
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad6d6baec692b3045956c291cec0aeb2, type: 3}
@@ -956,10 +956,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6000755908928981204, guid: 04bf9e065792aa3409f7bb62a12480da, type: 3}
-      propertyPath: m_Offset.y
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6000755908928981205, guid: 04bf9e065792aa3409f7bb62a12480da, type: 3}
       propertyPath: m_RootOrder
       value: 2

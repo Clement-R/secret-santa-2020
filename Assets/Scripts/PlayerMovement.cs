@@ -1,21 +1,32 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] private Rigidbody2D m_rb;
     [SerializeField] private float m_speed;
+
+    [Header("Jump")]
     [SerializeField] private float m_jumpHeight;
+
+    [Header("Grounded")]
     [SerializeField] private string m_obstacleLayer = "Obstacle";
     [SerializeField] private float m_groundedDistance = 2f;
 
+    [Header("Coyote time")]
+    [SerializeField] private float m_coyoteTime = 0.25f;
+
+    [Header("Debug")]
     [SerializeField] private bool m_debug = false;
 
     private float m_forward = 0f;
     private float m_jump = 0f;
     private bool m_grounded = true;
+    private float m_lastGrounded = 0f;
 
     private void Start()
     {
@@ -27,10 +38,26 @@ public class PlayerMovement : MonoBehaviour
         GetInputs();
         m_grounded = IsGrounded();
 
+        if (m_grounded)
+        {
+            m_lastGrounded = Time.time;
+        }
+
         if (m_debug)
         {
             VisualDebug();
         }
+    }
+
+    private bool CanJump()
+    {
+        // Coyote time
+        if (!m_grounded && Time.time <= m_lastGrounded + m_coyoteTime)
+        {
+            return true;
+        }
+
+        return m_grounded;
     }
 
     private void GetInputs()
@@ -93,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
             m_rb.velocity = new Vector2(0f, m_rb.velocity.y);
         }
 
-        if (m_jump != 0f && m_grounded)
+        if (m_jump != 0f && CanJump())
         {
             m_rb.AddForce(new Vector2(0f, m_jumpHeight), ForceMode2D.Impulse);
         }
