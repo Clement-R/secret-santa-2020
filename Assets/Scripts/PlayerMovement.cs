@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool Jumping => m_rb.velocity.y > 0.1f;
+    public bool Falling => m_rb.velocity.y < -0.1f;
+    public bool Walking => m_rb.velocity.x != 0f;
+    public int Direction => m_rb.velocity.x > 0 ? 1 : -1;
+
     [Header("Movement")]
     [SerializeField] private Rigidbody2D m_rb;
     [SerializeField] private float m_speed;

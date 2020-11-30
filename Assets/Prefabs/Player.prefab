@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6000755908928981205}
   - component: {fileID: 6000755908928981206}
-  - component: {fileID: 6000755908928981204}
+  - component: {fileID: 5322640238342405265}
   - component: {fileID: 6000755908928981203}
   - component: {fileID: 6000755908928981202}
+  - component: {fileID: 6000755909357542929}
+  - component: {fileID: 85072939645974191}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -85,8 +87,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6000755908928981204
-BoxCollider2D:
+--- !u!58 &5322640238342405265
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -99,18 +101,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 4}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 16, y: 16}
-    newSize: {x: 16, y: 16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
-  m_EdgeRadius: 0
+  m_Radius: 4
 --- !u!50 &6000755908928981203
 Rigidbody2D:
   serializedVersion: 4
@@ -130,7 +122,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &6000755908928981202
 MonoBehaviour:
@@ -151,3 +143,39 @@ MonoBehaviour:
   m_groundedDistance: 2
   m_coyoteTime: 0.15
   m_debug: 0
+--- !u!95 &6000755909357542929
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6000755908928981207}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77f4d444af4c91e40b93d58fd6acce0c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &85072939645974191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6000755908928981207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6af722ee405ac1d42a006c43a3ec2479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Jumping: Jumping
+  Falling: Falling
+  Walking: Walking
+  m_playerMovement: {fileID: 6000755908928981202}
+  m_animator: {fileID: 6000755909357542929}
