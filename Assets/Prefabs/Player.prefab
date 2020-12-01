@@ -192,6 +192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de14b753c4b2b0429d10ef08f0121c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_jumpingFxPrefab: {fileID: 4993488810277829904, guid: 860f9deb9cd976645b3a8c033d9eea51, type: 3}
-  m_landingFxPrefab: {fileID: 4993488810277829904, guid: 860f9deb9cd976645b3a8c033d9eea51, type: 3}
   m_playerMovement: {fileID: 6000755908928981202}
+  m_jumpingFxPrefab: {fileID: 4993488810277829904, guid: 860f9deb9cd976645b3a8c033d9eea51, type: 3}
+  m_landingFxPrefab: {fileID: 4993488810277829904, guid: ea26c05b6388f5642b3158eed4212367, type: 3}

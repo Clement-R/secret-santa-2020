@@ -11,8 +11,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool Jumping => m_rb.velocity.y > 0.1f;
     public bool Falling => m_rb.velocity.y < -0.1f;
-    public bool Walking => m_rb.velocity.x != 0f;
-    public int Direction => m_rb.velocity.x > 0 ? 1 : -1;
+    public bool Walking => m_rb.velocity.x > 0.1f || m_rb.velocity.x < -0.1f;
+    public int Direction => m_direction;
 
     [Header("Movement")]
     [SerializeField] private Rigidbody2D m_rb;
@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     private float m_jump = 0f;
     private bool m_grounded = true;
     private float m_lastGrounded = 0f;
+    private int m_direction;
 
     private void Start()
     {
@@ -50,7 +51,11 @@ public class PlayerMovement : MonoBehaviour
         if (m_grounded != grounded)
         {
             m_grounded = grounded;
-            OnLand?.Invoke();
+
+            if (Falling)
+            {
+                OnLand?.Invoke();
+            }
         }
 
         if (m_grounded)
@@ -129,6 +134,7 @@ public class PlayerMovement : MonoBehaviour
         if (m_forward != 0f)
         {
             m_rb.velocity = new Vector2(m_forward * m_speed, m_rb.velocity.y);
+            m_direction = (int) m_forward;
         }
         else
         {
