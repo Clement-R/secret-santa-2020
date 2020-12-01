@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Action OnJump;
+    public Action OnLand;
+
     public bool Jumping => m_rb.velocity.y > 0.1f;
     public bool Falling => m_rb.velocity.y < -0.1f;
     public bool Walking => m_rb.velocity.x != 0f;
@@ -41,7 +44,14 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         GetInputs();
-        m_grounded = IsGrounded();
+
+        // Check if grounded
+        var grounded = IsGrounded();
+        if (m_grounded != grounded)
+        {
+            m_grounded = grounded;
+            OnLand?.Invoke();
+        }
 
         if (m_grounded)
         {
@@ -128,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
         if (m_jump != 0f && CanJump())
         {
             m_rb.AddForce(new Vector2(0f, m_jumpHeight), ForceMode2D.Impulse);
+            OnJump?.Invoke();
         }
 
         m_forward = 0f;

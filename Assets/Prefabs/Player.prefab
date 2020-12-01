@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6000755908928981202}
   - component: {fileID: 6000755909357542929}
   - component: {fileID: 85072939645974191}
+  - component: {fileID: 8537480170087394641}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -179,3 +180,18 @@ MonoBehaviour:
   Walking: Walking
   m_playerMovement: {fileID: 6000755908928981202}
   m_animator: {fileID: 6000755909357542929}
+--- !u!114 &8537480170087394641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6000755908928981207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9de14b753c4b2b0429d10ef08f0121c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_jumpingFxPrefab: {fileID: 4993488810277829904, guid: 860f9deb9cd976645b3a8c033d9eea51, type: 3}
+  m_landingFxPrefab: {fileID: 4993488810277829904, guid: 860f9deb9cd976645b3a8c033d9eea51, type: 3}
+  m_playerMovement: {fileID: 6000755908928981202}
