@@ -136,7 +136,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 24
+        width: 28
         height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -155,9 +155,9 @@ TextureImporter:
       name: land_particles_1
       rect:
         serializedVersion: 2
-        x: 24
+        x: 28
         y: 0
-        width: 24
+        width: 28
         height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -176,9 +176,9 @@ TextureImporter:
       name: land_particles_2
       rect:
         serializedVersion: 2
-        x: 48
+        x: 56
         y: 0
-        width: 24
+        width: 28
         height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -197,9 +197,9 @@ TextureImporter:
       name: land_particles_3
       rect:
         serializedVersion: 2
-        x: 72
+        x: 84
         y: 0
-        width: 24
+        width: 28
         height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -218,9 +218,9 @@ TextureImporter:
       name: land_particles_4
       rect:
         serializedVersion: 2
-        x: 96
+        x: 112
         y: 0
-        width: 24
+        width: 28
         height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
