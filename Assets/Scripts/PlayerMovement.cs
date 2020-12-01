@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool Jumping => m_rb.velocity.y > 0.1f;
     public bool Falling => m_rb.velocity.y < -0.1f;
-    public bool Walking => m_rb.velocity.x > 0.1f || m_rb.velocity.x < -0.1f;
+    public bool Walking => (m_rb.velocity.x > 0.1f || m_rb.velocity.x < -0.1f) && m_grounded;
     public int Direction
     {
         get;

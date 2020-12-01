@@ -19,10 +19,7 @@ public class PlayerAnimator : MonoBehaviour
         m_animator.SetBool(Falling, m_playerMovement.Falling);
         m_animator.SetBool(Walking, m_playerMovement.Walking);
 
-        if (m_playerMovement.Walking)
-        {
-            var angle = m_playerMovement.Direction == 1 ? 0f : 180f;
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-        }
+        var angle = m_playerMovement.Direction == 1 ? 0f : 180f;
+        transform.rotation = Quaternion.Euler(0f, angle, 0f);
     }
 }
