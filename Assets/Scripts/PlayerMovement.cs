@@ -8,11 +8,22 @@ public class PlayerMovement : MonoBehaviour
 {
     public Action OnJump;
     public Action OnLand;
+    public Action OnCoyote;
 
     public bool Jumping => m_rb.velocity.y > 0.1f;
     public bool Falling => m_rb.velocity.y < -0.1f;
     public bool Walking => m_rb.velocity.x > 0.1f || m_rb.velocity.x < -0.1f;
-    public int Direction => m_direction;
+    public int Direction
+    {
+        get;
+        private set;
+    }
+    public Vector2 GroundPosition
+    {
+        get;
+        private set;
+    }
+    public Vector2 Velocity => m_rb.velocity;
 
     [Header("Movement")]
     [SerializeField] private Rigidbody2D m_rb;
@@ -35,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
     private float m_jump = 0f;
     private bool m_grounded = true;
     private float m_lastGrounded = 0f;
-    private int m_direction;
 
     private void Start()
     {
@@ -69,15 +79,22 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private bool CanJump()
+    private EJumpState CanJump()
     {
         // Coyote time
         if (!m_grounded && Time.time <= m_lastGrounded + m_coyoteTime)
         {
-            return true;
+            return EJumpState.COYOTE;
         }
 
-        return m_grounded;
+        if (m_grounded)
+        {
+            return EJumpState.CAN;
+        }
+        else
+        {
+            return EJumpState.CANNOT;
+        }
     }
 
     private void GetInputs()
@@ -126,6 +143,12 @@ public class PlayerMovement : MonoBehaviour
             m_groundedDistance,
             LayerMask.GetMask(m_obstacleLayer)
         );
+
+        if (hit.collider != null)
+        {
+            GroundPosition = hit.point;
+        }
+
         return hit.collider != null;
     }
 
@@ -134,17 +157,29 @@ public class PlayerMovement : MonoBehaviour
         if (m_forward != 0f)
         {
             m_rb.velocity = new Vector2(m_forward * m_speed, m_rb.velocity.y);
-            m_direction = (int) m_forward;
+            Direction = (int) m_forward;
         }
         else
         {
             m_rb.velocity = new Vector2(0f, m_rb.velocity.y);
         }
 
-        if (m_jump != 0f && CanJump())
+        if (m_jump != 0f)
         {
-            m_rb.AddForce(new Vector2(0f, m_jumpHeight), ForceMode2D.Impulse);
-            OnJump?.Invoke();
+            var jumpState = CanJump();
+            if (jumpState != EJumpState.CANNOT)
+            {
+                m_rb.AddForce(new Vector2(0f, m_jumpHeight), ForceMode2D.Impulse);
+
+                if (jumpState == EJumpState.COYOTE)
+                {
+                    OnCoyote?.Invoke();
+                }
+                else
+                {
+                    OnJump?.Invoke();
+                }
+            }
         }
 
         m_forward = 0f;
