@@ -54,11 +54,11 @@ public class PlayerFX : MonoBehaviour
 
     private void Land()
     {
-        SimplePool.Spawn(m_jumpingFxPrefab, m_playerMovement.GroundPosition, Quaternion.identity);
+        SimplePool.Spawn(m_landingFxPrefab, transform.position, Quaternion.identity);
     }
 
     private void Jump()
     {
-        SimplePool.Spawn(m_landingFxPrefab, transform.position, Quaternion.identity);
+        SimplePool.Spawn(m_jumpingFxPrefab, m_playerMovement.GroundPosition, Quaternion.identity);
     }
 }
