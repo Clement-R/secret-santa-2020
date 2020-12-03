@@ -18,6 +18,8 @@ public class PlayerHealth : MonoBehaviour
         }
 
         m_lastDamageTaken = Time.time;
+
+        LevelManager.Instance.Respawn();
     }
 
     private void OnTriggerEnter2D(Collider2D p_other)
