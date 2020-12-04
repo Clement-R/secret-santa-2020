@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Grounded")]
     [SerializeField] private string m_obstacleLayer = "Obstacle";
+    [SerializeField] private string m_floorLayer = "Floor";
     [SerializeField] private float m_groundedDistance = 2f;
 
     [Header("Coyote time")]
@@ -141,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
             transform.position,
             transform.up * -1f,
             m_groundedDistance,
-            LayerMask.GetMask(m_obstacleLayer)
+            LayerMask.GetMask(m_obstacleLayer, m_floorLayer)
         );
 
         if (hit.collider != null)
