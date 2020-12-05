@@ -10,6 +10,8 @@ public class CameraBehaviour : MonoBehaviour
     [SerializeField] private string m_floorLayer = "Floor";
     [SerializeField] private float m_scrollDuration = 0.5f;
     [SerializeField] private int m_floorTileTolerance = 1;
+    [SerializeField] private float m_xSmoothTime = 0.5f;
+    [SerializeField] private float m_xMaxSpeed = 0.5f;
 
     private int m_tileSize = 16;
     private int m_heightOffset => m_tilesOffset * m_tileSize;
@@ -17,6 +19,7 @@ public class CameraBehaviour : MonoBehaviour
 
     private float m_floorYPosition = float.MinValue;
     private float m_startScroll = 0f;
+    private float m_velocity = 0f;
 
     private void Start()
     {
@@ -35,8 +38,16 @@ public class CameraBehaviour : MonoBehaviour
 
         var t = Mathf.Clamp01((Time.time - m_startScroll) / m_scrollDuration);
 
-        transform.position = new Vector3(
+        var x = Mathf.SmoothDamp(
+            transform.position.x,
             m_player.transform.position.x,
+            ref m_velocity,
+            m_xSmoothTime,
+            m_xMaxSpeed
+        );
+
+        transform.position = new Vector3(
+            x,
             Mathf.Lerp(transform.position.y, m_floorYPosition + m_heightOffset, t),
             transform.position.z
         );

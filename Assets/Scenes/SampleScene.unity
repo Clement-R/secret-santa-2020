@@ -3323,6 +3323,8 @@ MonoBehaviour:
   m_floorLayer: Floor
   m_scrollDuration: 2
   m_floorTileTolerance: 1
+  m_xSmoothTime: 0.1
+  m_xMaxSpeed: 200
 --- !u!1 &2138285275
 GameObject:
   m_ObjectHideFlags: 0
