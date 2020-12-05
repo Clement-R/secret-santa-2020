@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class ActivatedSpikes : MonoBehaviour
+public class ActivatedSpikes : Trap
 {
     [SerializeField] private float m_activationTime;
     [SerializeField] private float m_activeDuration;
@@ -15,9 +15,13 @@ public class ActivatedSpikes : MonoBehaviour
     private bool m_isTriggered = false;
     private bool m_isActive = false;
 
-    private void Start()
+    public override void TrapReset()
     {
         Deactivate();
+        m_isActive = false;
+        m_isTriggered = false;
+        m_lastActivation = float.MinValue;
+        m_nextActivation = float.MinValue;
     }
 
     private void OnTriggerEnter2D(Collider2D p_collider)

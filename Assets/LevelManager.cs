@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     public Action<Transform> OnRespawn;
 
     private CheckpointBehaviour m_lastCheckpoint;
+    private List<Trap> m_traps = new List<Trap>();
 
     private void Awake()
     {
@@ -20,7 +21,12 @@ public class LevelManager : MonoBehaviour
         Instance = this;
     }
 
-    internal void RegisterCheckpoint(CheckpointBehaviour p_checkpoint)
+    public void RegisterTrap(Trap p_trap)
+    {
+        m_traps.Add(p_trap);
+    }
+
+    public void RegisterCheckpoint(CheckpointBehaviour p_checkpoint)
     {
         p_checkpoint.OnActivation += CheckpointActivated;
     }
@@ -33,5 +39,6 @@ public class LevelManager : MonoBehaviour
     public void Respawn()
     {
         OnRespawn?.Invoke(m_lastCheckpoint.transform);
+        m_traps.ForEach(t => t.TrapReset());
     }
 }

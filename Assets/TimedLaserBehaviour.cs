@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class TimedLaserBehaviour : MonoBehaviour
+public class TimedLaserBehaviour : Trap
 {
     [SerializeField] private float m_delayDuration;
     [SerializeField] private float m_activeDuration;
@@ -12,9 +12,11 @@ public class TimedLaserBehaviour : MonoBehaviour
     private float m_lastActivation = 0f;
     private float m_nextActivation = 0f;
 
-    void Start()
+    public override void TrapReset()
     {
         m_laser.SetActive(false);
+        m_lastActivation = 0f;
+        m_nextActivation = Time.time + m_delayDuration;
     }
 
     void Update()

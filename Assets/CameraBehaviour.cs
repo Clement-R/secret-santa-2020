@@ -53,7 +53,6 @@ public class CameraBehaviour : MonoBehaviour
 
         if (hit.collider != null)
         {
-            Debug.Log("Hit floor");
             return hit.point.y;
         }
 

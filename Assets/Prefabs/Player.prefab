@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 85072939645974191}
   - component: {fileID: 8537480170087394641}
   - component: {fileID: 5690690784579719408}
+  - component: {fileID: 642713716}
   m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
@@ -144,8 +145,9 @@ MonoBehaviour:
   m_speed: 50
   m_jumpHeight: 100
   m_obstacleLayer: Obstacle
+  m_floorLayer: Floor
   m_groundedDistance: 2
-  m_coyoteTime: 0.15
+  m_coyoteTime: 0.2
   m_debug: 0
 --- !u!95 &6000755909357542929
 Animator:
@@ -215,6 +217,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_trapLayerName: Trap
   m_invincibilityDuration: 1
+--- !u!114 &642713716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6000755908928981207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af83765f4e06fe4db95a7f921a1583d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6820728966788154789
 GameObject:
   m_ObjectHideFlags: 0
