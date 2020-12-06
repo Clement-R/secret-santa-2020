@@ -6,6 +6,7 @@ using UnityEngine;
 public class TimedLaserBehaviour : Trap
 {
     [SerializeField] private float m_delayDuration;
+    [SerializeField] private float m_offsetDuration;
     [SerializeField] private float m_activeDuration;
     [SerializeField] private GameObject m_laser;
 
@@ -16,7 +17,7 @@ public class TimedLaserBehaviour : Trap
     {
         m_laser.SetActive(false);
         m_lastActivation = 0f;
-        m_nextActivation = Time.time + m_delayDuration;
+        m_nextActivation = Time.time + m_offsetDuration;
     }
 
     void Update()
