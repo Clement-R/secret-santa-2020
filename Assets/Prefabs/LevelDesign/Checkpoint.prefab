@@ -145,3 +145,4 @@ MonoBehaviour:
   m_playerLayerName: Player
   m_animator: {fileID: 8640824744958941272}
   m_animatorOnParameter: On
+  m_activateSFX: {fileID: 11400000, guid: 8b4e0aca9c6f6704b996bdab8dde4442, type: 2}

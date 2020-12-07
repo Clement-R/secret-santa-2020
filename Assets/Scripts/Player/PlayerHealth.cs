@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public Action OnDeath;
+
     [SerializeField] private string m_trapLayerName = "Trap";
     [SerializeField] private float m_invincibilityDuration = 0.2f;
 
@@ -18,8 +21,9 @@ public class PlayerHealth : MonoBehaviour
         }
 
         m_lastDamageTaken = Time.time;
-
         LevelManager.Instance.Respawn();
+
+        OnDeath?.Invoke();
     }
 
     private void OnTriggerEnter2D(Collider2D p_other)

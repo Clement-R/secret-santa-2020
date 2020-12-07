@@ -11,6 +11,7 @@ public class CheckpointBehaviour : MonoBehaviour
     [SerializeField] private string m_playerLayerName;
     [SerializeField] private Animator m_animator;
     [SerializeField] private string m_animatorOnParameter = "On";
+    [SerializeField] private SFX m_activateSFX;
 
     private bool m_isActive = false;
 
@@ -34,6 +35,7 @@ public class CheckpointBehaviour : MonoBehaviour
 
         m_isActive = true;
         m_animator.SetBool(m_animatorOnParameter, true);
+        SoundsManager.Instance.PlayOneShot(m_activateSFX);
         OnActivation?.Invoke(this);
     }
 }

@@ -18,13 +18,6 @@ public class ChronometerUI : MonoBehaviour
     {
         m_stopWatch = new Stopwatch();
         m_stopWatch.Start();
-
-        LevelManager.Instance.OnRespawn += ResetTimer;
-    }
-
-    private void ResetTimer(Transform p_checkpoint)
-    {
-        m_stopWatch.Reset();
     }
 
     void Update()
