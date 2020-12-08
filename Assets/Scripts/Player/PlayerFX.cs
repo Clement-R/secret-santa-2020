@@ -4,12 +4,16 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+using DG.Tweening;
+
 public class PlayerFX : MonoBehaviour
 {
     [SerializeField] private PlayerMovement m_playerMovement;
+    [SerializeField] private PlayerHealth m_playerHealth;
     [SerializeField] private GameObject m_jumpingFxPrefab;
     [SerializeField] private GameObject m_landingFxPrefab;
     [SerializeField] private GameObject m_coyoteFxPrefab;
+    [SerializeField] private GameObject m_deathParticles;
     [SerializeField] private ParticleSystem m_walkParticles;
 
     [SerializeField] private Transform m_coyoteTransform;
@@ -19,9 +23,15 @@ public class PlayerFX : MonoBehaviour
         m_playerMovement.OnJump += Jump;
         m_playerMovement.OnLand += Land;
         m_playerMovement.OnCoyote += Coyote;
+        m_playerHealth.OnDeath += Death;
 
         SimplePool.Preload(m_jumpingFxPrefab, 5);
         SimplePool.Preload(m_landingFxPrefab, 5);
+    }
+
+    private void Death()
+    {
+        SimplePool.Spawn(m_deathParticles, transform.position, Quaternion.identity);
     }
 
     private void Update()

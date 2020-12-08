@@ -8,22 +8,37 @@ public class PlayerHealth : MonoBehaviour
 {
     public Action OnDeath;
 
-    [SerializeField] private string m_trapLayerName = "Trap";
-    [SerializeField] private float m_invincibilityDuration = 0.2f;
+    public bool Dead
+    {
+        get;
+        private set;
+    } = false;
 
-    private float m_lastDamageTaken = 0f;
+    [SerializeField] private string m_trapLayerName = "Trap";
+
+    private Coroutine m_respawnRoutine = null;
 
     private void TakeDamage()
     {
-        if (Time.time <= m_lastDamageTaken + m_invincibilityDuration)
+        if (m_respawnRoutine != null)
         {
             return;
         }
 
-        m_lastDamageTaken = Time.time;
+        m_respawnRoutine = StartCoroutine(_Respawn());
+    }
+
+    private IEnumerator _Respawn()
+    {
+        Dead = true;
+        OnDeath?.Invoke();
+
+        yield return new WaitForSecondsRealtime(0.5f);
+
         LevelManager.Instance.Respawn();
 
-        OnDeath?.Invoke();
+        m_respawnRoutine = null;
+        Dead = false;
     }
 
     private void OnTriggerEnter2D(Collider2D p_other)

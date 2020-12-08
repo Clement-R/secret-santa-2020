@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3c163322ae10045a112003b041e984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerHealth: {fileID: 5690690784579719408}
   m_rb: {fileID: 6000755908928981203}
   m_speed: 50
   m_jumpHeight: 100
@@ -199,9 +200,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerMovement: {fileID: 6000755908928981202}
+  m_playerHealth: {fileID: 5690690784579719408}
   m_jumpingFxPrefab: {fileID: 4993488810277829904, guid: 860f9deb9cd976645b3a8c033d9eea51, type: 3}
   m_landingFxPrefab: {fileID: 4993488810277829904, guid: ea26c05b6388f5642b3158eed4212367, type: 3}
   m_coyoteFxPrefab: {fileID: 4993488810277829904, guid: 8a6aa81241728544ba0aec731fb35cc9, type: 3}
+  m_deathParticles: {fileID: 2038820470945038912, guid: 7b4942764ba8b6549a759aee0a378411, type: 3}
   m_walkParticles: {fileID: 5587405276237122141}
   m_coyoteTransform: {fileID: 2790124612119514867}
 --- !u!114 &5690690784579719408
@@ -217,7 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_trapLayerName: Trap
-  m_invincibilityDuration: 0
 --- !u!114 &642713716
 MonoBehaviour:
   m_ObjectHideFlags: 0

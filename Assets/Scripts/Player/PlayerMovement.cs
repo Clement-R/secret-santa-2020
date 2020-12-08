@@ -25,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
     }
     public Vector2 Velocity => m_rb.velocity;
 
+    [Header("Components")]
+    [SerializeField] private PlayerHealth m_playerHealth;
+
     [Header("Movement")]
     [SerializeField] private Rigidbody2D m_rb;
     [SerializeField] private float m_speed;
@@ -48,13 +51,21 @@ public class PlayerMovement : MonoBehaviour
     private bool m_grounded = true;
     private float m_lastGrounded = 0f;
 
-    private void Start()
-    {
-
-    }
-
     private void Update()
     {
+        if (!CanMove())
+        {
+            m_rb.velocity = Vector3.zero;
+            if (!m_rb.isKinematic)
+                m_rb.isKinematic = true;
+            return;
+        }
+        else
+        {
+            if (m_rb.isKinematic)
+                m_rb.isKinematic = false;
+        }
+
         GetInputs();
 
         // Check if grounded
@@ -78,6 +89,12 @@ public class PlayerMovement : MonoBehaviour
         {
             VisualDebug();
         }
+    }
+
+    private bool CanMove()
+    {
+        var canMove = !m_playerHealth.Dead;
+        return canMove;
     }
 
     private EJumpState CanJump()
