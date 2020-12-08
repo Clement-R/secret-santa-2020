@@ -4,11 +4,13 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class ActivatedSpikes : Trap
+public class ActivatedSpikes : ActivationTrap
 {
     [SerializeField] private float m_activationTime;
     [SerializeField] private float m_activeDuration;
     [SerializeField] private GameObject m_spikes;
+    [SerializeField] private SFX m_spikesTrigger;
+    [SerializeField] private SFX m_spikesActivate;
 
     private float m_nextActivation = float.MinValue;
     private float m_lastActivation = float.MinValue;
@@ -17,7 +19,8 @@ public class ActivatedSpikes : Trap
 
     public override void TrapReset()
     {
-        Deactivate();
+        base.TrapReset();
+
         m_isActive = false;
         m_isTriggered = false;
         m_lastActivation = float.MinValue;
@@ -31,6 +34,8 @@ public class ActivatedSpikes : Trap
 
         m_nextActivation = Time.time + m_activationTime;
         m_isTriggered = true;
+
+        SoundsManager.Instance.PlayOneShot(m_spikesTrigger);
     }
 
     private void Update()
@@ -50,12 +55,17 @@ public class ActivatedSpikes : Trap
         }
     }
 
-    private void Activate()
+    protected override void Activate(bool p_silent = false)
     {
         m_spikes.SetActive(true);
+
+        if (p_silent)
+            return;
+
+        SoundsManager.Instance.PlayOneShot(m_spikesActivate);
     }
 
-    private void Deactivate()
+    protected override void Deactivate(bool p_silent = false)
     {
         m_spikes.SetActive(false);
     }

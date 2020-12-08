@@ -123,9 +123,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ae8905c73f9c847bf4bf2b42839156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_activationTime: 2
-  m_activeDuration: 4
+  m_activationTime: 0.75
+  m_activeDuration: 1
   m_spikes: {fileID: 7135620564228481473}
+  m_spikesTrigger: {fileID: 11400000, guid: b69d463069aafc74393fcc17b117e073, type: 2}
+  m_spikesActivate: {fileID: 11400000, guid: 531a3f49209dbb7489f45dcd57d92e4e, type: 2}
 --- !u!1 &7135620564228481473
 GameObject:
   m_ObjectHideFlags: 0

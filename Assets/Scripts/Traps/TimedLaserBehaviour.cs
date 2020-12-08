@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class TimedLaserBehaviour : Trap
+public class TimedLaserBehaviour : ActivationTrap
 {
     [SerializeField] private float m_delayDuration;
     [SerializeField] private float m_offsetDuration;
@@ -15,7 +15,8 @@ public class TimedLaserBehaviour : Trap
 
     public override void TrapReset()
     {
-        m_laser.SetActive(false);
+        base.TrapReset();
+
         m_lastActivation = 0f;
         m_nextActivation = Time.time + m_offsetDuration;
     }
@@ -24,14 +25,24 @@ public class TimedLaserBehaviour : Trap
     {
         if (Time.time > m_nextActivation)
         {
-            m_laser.SetActive(true);
-            m_lastActivation = Time.time;
-            m_nextActivation = m_lastActivation + m_activeDuration + m_delayDuration;
+            Activate();
         }
 
         if (Time.time > m_lastActivation + m_activeDuration)
         {
-            m_laser.SetActive(false);
+            Deactivate();
         }
+    }
+
+    protected override void Activate(bool p_silent = false)
+    {
+        m_laser.SetActive(true);
+        m_lastActivation = Time.time;
+        m_nextActivation = m_lastActivation + m_activeDuration + m_delayDuration;
+    }
+
+    protected override void Deactivate(bool p_silent = false)
+    {
+        m_laser.SetActive(false);
     }
 }

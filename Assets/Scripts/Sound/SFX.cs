@@ -4,5 +4,5 @@ using UnityEngine;
 public class SFX : ScriptableObject
 {
     public AudioClip Clip;
-    public float Volume;
+    public float Volume = 1f;
 }
