@@ -47,3 +47,9 @@ TagManager:
   - name: IntroShip
     uniqueID: 865741643
     locked: 0
+  - name: UI
+    uniqueID: 1826414435
+    locked: 0
+  - name: Fade
+    uniqueID: 2940169243
+    locked: 0
