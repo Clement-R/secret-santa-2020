@@ -65,3 +65,6 @@ TagManager:
   - name: UI
     uniqueID: 1826414435
     locked: 0
+  - name: CinematicFade
+    uniqueID: 871886847
+    locked: 0

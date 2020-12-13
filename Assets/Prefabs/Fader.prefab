@@ -68,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1354798053
-  m_SortingLayer: 4
+  m_SortingLayerID: 871886847
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 73a86923c1d988c42b15b39c9fb3afe4, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -153,8 +153,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1354798053
-  m_SortingLayer: 4
+  m_SortingLayerID: 871886847
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0cb903303e7b3cd4aa512cab32540a02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -182,6 +182,7 @@ MonoBehaviour:
   m_animator: {fileID: 2052892081926530311}
   m_fadeParameter: Fade
   m_doFadeParameter: DoFade
+  m_fadeAnimationClip: {fileID: 7400000, guid: f7688a04abb854c48a92b9e4cdabd915, type: 2}
 --- !u!95 &2052892081926530311
 Animator:
   serializedVersion: 3

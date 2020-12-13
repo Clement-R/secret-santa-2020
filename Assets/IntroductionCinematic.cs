@@ -47,4 +47,9 @@ public class IntroductionCinematic : MonoBehaviour
     {
         m_textAppear.PlayEffect(p_text);
     }
+
+    public void LoadGameScene()
+    {
+        SceneLoader.Instance.LoadScene("Level1");
+    }
 }

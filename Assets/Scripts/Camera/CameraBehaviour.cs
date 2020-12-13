@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraBehaviour : MonoBehaviour
 {
+    public static CameraBehaviour Instance;
+
     [SerializeField] private GameObject m_player;
     [SerializeField] private int m_tilesOffset = 5;
     [SerializeField] private string m_floorLayer = "Floor";
@@ -12,6 +15,8 @@ public class CameraBehaviour : MonoBehaviour
     [SerializeField] private int m_floorTileTolerance = 1;
     [SerializeField] private float m_xSmoothTime = 0.5f;
     [SerializeField] private float m_xMaxSpeed = 0.5f;
+
+    private bool m_initialized = false;
 
     private int m_tileSize = 16;
     private int m_heightOffset => m_tilesOffset * m_tileSize;
@@ -21,12 +26,57 @@ public class CameraBehaviour : MonoBehaviour
     private float m_startScroll = 0f;
     private float m_velocity = 0f;
 
-    private void Start()
+    private void Awake()
     {
-        LevelManager.Instance.OnRespawn += PlayerRespawn;
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
-    void Update()
+    private void Start()
+    {
+        if (m_initialized)
+            return;
+
+        DontDestroyOnLoad(gameObject);
+
+        SceneManager.sceneLoaded += SceneLoaded;
+        SceneManager.sceneUnloaded += SceneUnloaded;
+    }
+
+    private void SceneLoaded(Scene p_scene, LoadSceneMode p_sceneMode)
+    {
+        if (LevelManager.Instance != null)
+        {
+            LevelManager.Instance.OnRespawn += PlayerRespawn;
+        }
+
+        if (PlayerInstance.Instance != null)
+        {
+            m_player = PlayerInstance.Instance.gameObject;
+            StartCoroutine(_GetFloor());
+        }
+    }
+
+    private void SceneUnloaded(Scene arg0)
+    {
+
+    }
+
+    void LateUpdate()
+    {
+        if (m_player != null)
+        {
+            FollowPlayer();
+        }
+    }
+
+    private void FollowPlayer()
     {
         // If floor position is not set or player is under current floor position
         if (m_floorYPosition == float.MinValue ||
@@ -56,7 +106,7 @@ public class CameraBehaviour : MonoBehaviour
     private float GetFloor()
     {
         var hit = Physics2D.Raycast(
-            m_player.transform.position,
+            m_player.transform.position + transform.up,
             transform.up * -1f,
             1000f,
             LayerMask.GetMask(m_floorLayer)
@@ -68,6 +118,12 @@ public class CameraBehaviour : MonoBehaviour
         }
 
         return float.MinValue;
+    }
+
+    private IEnumerator _GetFloor()
+    {
+        yield return null;
+        m_floorYPosition = GetFloor();
     }
 
     private void PlayerRespawn(Transform obj)
