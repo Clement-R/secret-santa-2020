@@ -48,6 +48,7 @@ public class TextAppear : MonoBehaviour
         }
 
         yield return new WaitForSeconds(m_delayBeforeClear);
+        textComponent.text = string.Empty;
     }
 
     [Header("Debug")]
@@ -57,7 +58,7 @@ public class TextAppear : MonoBehaviour
     private void DebugDuration()
     {
         var text = GetParsedText(m_debugText);
-        var duration = ((text.Length - 1) * m_revealDelay) + m_delayBeforeClear + 0.05f;
+        var duration = ((text.Length - 1) * m_revealDelay) + m_delayBeforeClear + 0.1f;
 
         TimeSpan timeSpan = TimeSpan.FromSeconds(m_debugStart);
         timeSpan = timeSpan.Add(TimeSpan.FromSeconds(duration));
