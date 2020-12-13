@@ -41,6 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Environnement
+    uniqueID: 311613865
+    locked: 0
+  - name: Traps
+    uniqueID: 517139571
+    locked: 0
+  - name: Fade
+    uniqueID: 2940169243
+    locked: 0
+  - name: Player
+    uniqueID: 2209240487
+    locked: 0
+  - name: Floor
+    uniqueID: 3472025601
+    locked: 0
   - name: ParticlesTop
     uniqueID: 3669861409
     locked: 0
@@ -49,7 +64,4 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1826414435
-    locked: 0
-  - name: Fade
-    uniqueID: 2940169243
     locked: 0
