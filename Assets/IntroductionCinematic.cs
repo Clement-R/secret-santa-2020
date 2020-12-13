@@ -7,6 +7,9 @@ using DG.Tweening;
 
 public class IntroductionCinematic : MonoBehaviour
 {
+    [Header("Text effect")]
+    [SerializeField] private TextAppear m_textAppear;
+
     [Header("Exclamation point")]
     [SerializeField] private GameObject m_exclamationPoint;
     [SerializeField] private float m_jumpPower = 25f;
@@ -38,5 +41,10 @@ public class IntroductionCinematic : MonoBehaviour
                 m_exclamationPoint.SetActive(false);
             }
         );
+    }
+
+    public void PlayDialog(string p_text)
+    {
+        m_textAppear.PlayEffect(p_text);
     }
 }

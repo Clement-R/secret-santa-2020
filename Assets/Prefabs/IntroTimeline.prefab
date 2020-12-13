@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8252883259072607031}
   - component: {fileID: 8252883259072607024}
+  - component: {fileID: 114529943}
+  - component: {fileID: 114529944}
   m_Layer: 0
   m_Name: IntroTimeline
   m_TagString: Untagged
@@ -45,6 +47,65 @@ PlayableDirector:
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
-  m_SceneBindings: []
+  m_SceneBindings:
+  - key: {fileID: -2306739620314980431, guid: ec42ad7ce165b4e48b41a017d6fb2959, type: 2}
+    value: {fileID: 114529944}
+  - key: {fileID: -3456807948369115625, guid: ec42ad7ce165b4e48b41a017d6fb2959, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3561934793593729307, guid: ec42ad7ce165b4e48b41a017d6fb2959, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -4377117608297073544, guid: ec42ad7ce165b4e48b41a017d6fb2959, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -7789589755683843918, guid: ec42ad7ce165b4e48b41a017d6fb2959, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 358491691709756376, guid: ec42ad7ce165b4e48b41a017d6fb2959, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 3225959946501343952, guid: ec42ad7ce165b4e48b41a017d6fb2959, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &114529943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8252883259072607025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ccbd9cb9998a84f8e57f20be0e33f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_exclamationPoint: {fileID: 0}
+  m_jumpPower: 25
+  m_jumpDuration: 0.5
+--- !u!114 &114529944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8252883259072607025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: b75058819ef78c947a60b8ce45706860, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114529943}
+          m_TargetAssemblyTypeName: IntroductionCinematic, Assembly-CSharp
+          m_MethodName: ExclamationPoint
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

@@ -5,38 +5,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using TMPro;
+
 public class TextAppear : MonoBehaviour
 {
     public Action OnLetterAppear;
 
-    [SerializeField] private Text m_text;
+    public bool IsTalking = false;
+
+    [SerializeField] private TMP_Text m_tmpText;
     [SerializeField] private float m_revealDelay;
+    [SerializeField] private float m_delayBeforeClear;
 
-    private string m_fullText;
-    private int m_index = 0;
-
-    private float m_nextReveal = 0f;
-
-    private void Awake()
+    public void PlayEffect(string p_text)
     {
-        if (m_text == null)
-            return;
-
-        m_fullText = m_text.text;
-        m_text.text = string.Empty;
+        m_tmpText.text = p_text;
+        StartCoroutine(_RevealCharacters(m_tmpText));
     }
 
-    private void Update()
+    IEnumerator _RevealCharacters(TMP_Text textComponent)
     {
-        if (Input.GetKey(KeyCode.D))
+        textComponent.ForceMeshUpdate();
+
+        var text = m_tmpText.text;
+        textComponent.text = string.Empty;
+
+        int index = 0;
+
+        while (index < text.Length)
         {
-            if (Time.time > m_nextReveal && m_index < m_fullText.Length)
+            if (text[index] == '<')
             {
-                m_text.text += m_fullText[m_index];
-                m_nextReveal = Time.time + m_revealDelay;
-                m_index++;
-                OnLetterAppear?.Invoke();
+                textComponent.text += $"<{text[index+1]}{text[index+2]}>";
+                index += 4;
+                continue;
             }
+
+            textComponent.text += text[index];
+
+            index += 1;
+            OnLetterAppear?.Invoke();
+
+            yield return new WaitForSeconds(m_revealDelay);
         }
+
+        yield return new WaitForSeconds(m_delayBeforeClear);
+
+        m_tmpText.text = string.Empty;
     }
 }
