@@ -7,6 +7,8 @@ using UnityEngine.Timeline;
 
 public class FirstLevelCinematic : MonoBehaviour
 {
+    [Header("Text effect")]
+    [SerializeField] private TextAppear m_textAppear;
     private GameObject m_player;
 
     private void Start()
@@ -22,5 +24,10 @@ public class FirstLevelCinematic : MonoBehaviour
     public void StopPlaying()
     {
         CinematicManager.Instance.StopPlaying();
+    }
+
+    public void PlayDialog(string p_text)
+    {
+        m_textAppear.PlayEffect(p_text);
     }
 }

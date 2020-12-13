@@ -112,6 +112,23 @@ MonoBehaviour:
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 489c3d431866f7d41b736ab0d3cfcd67, type: 2}
+--- !u!114 &-4691600652500453497
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Dialog Signal Emitter
+  m_EditorClassIdentifier: Assembly-CSharp::DialogSignalEmitter
+  m_Time: 6
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: f3fdd41740df2f8499c6043dd326b031, type: 2}
+  Dialog: My radio catched your signal
 --- !u!114 &-4687038364317544269
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,7 +174,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 3
+    m_Start: 2
     m_ClipIn: 0
     m_Asset: {fileID: 4746441723108739349}
     m_Duration: 1
@@ -222,11 +239,11 @@ MonoBehaviour:
     m_Recordable: 1
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
-    m_PostExtrapolationTime: 2
-    m_PreExtrapolationTime: 3
+    m_PostExtrapolationTime: 14.5
+    m_PreExtrapolationTime: 2
     m_DisplayName: Recorded (3)
   - m_Version: 1
-    m_Start: 6
+    m_Start: 17.5
     m_ClipIn: 0
     m_Asset: {fileID: 2644772924171171368}
     m_Duration: 1
@@ -314,6 +331,23 @@ MonoBehaviour:
   m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_ApplyOffsets: 0
+--- !u!114 &-3239155921687853423
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Dialog Signal Emitter
+  m_EditorClassIdentifier: Assembly-CSharp::DialogSignalEmitter
+  m_Time: 3
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: f3fdd41740df2f8499c6043dd326b031, type: 2}
+  Dialog: Oh!<br>Someone?
 --- !u!74 &-2888228048998052046
 AnimationClip:
   m_ObjectHideFlags: 0
@@ -593,6 +627,23 @@ MonoBehaviour:
   m_Loop: 0
   m_Version: 1
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+--- !u!114 &-2425759206958953774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Dialog Signal Emitter
+  m_EditorClassIdentifier: Assembly-CSharp::DialogSignalEmitter
+  m_Time: 14.5
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: f3fdd41740df2f8499c6043dd326b031, type: 2}
+  Dialog: Please help me!
 --- !u!114 &-1127199204444943562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -790,11 +841,28 @@ MonoBehaviour:
   - {fileID: -1127199204444943562}
   - {fileID: 906380450528996661}
   - {fileID: -3719545698889835635}
-  m_FixedDuration: 6
+  m_FixedDuration: 20.033333333333335
   m_EditorSettings:
     m_Framerate: 60
   m_DurationMode: 1
   m_MarkerTrack: {fileID: -4687038364317544269}
+--- !u!114 &213751549019167110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Dialog Signal Emitter
+  m_EditorClassIdentifier: Assembly-CSharp::DialogSignalEmitter
+  m_Time: 10.5
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: f3fdd41740df2f8499c6043dd326b031, type: 2}
+  Dialog: "I\u2019m in the deepest room"
 --- !u!114 &906380450528996661
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -848,7 +916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 4.983333333333333
+  m_Time: 20
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: e05e8c61ba78dde47b6ac8915140ae7e, type: 2}
@@ -1463,3 +1531,7 @@ MonoBehaviour:
     m_Objects:
     - {fileID: -6263751379974500927}
     - {fileID: 908703035614009856}
+    - {fileID: -3239155921687853423}
+    - {fileID: -4691600652500453497}
+    - {fileID: 213751549019167110}
+    - {fileID: -2425759206958953774}
