@@ -17,13 +17,14 @@ public class PlayerMovement : MonoBehaviour
     {
         get;
         private set;
-    }
+    } = 1;
     public Vector2 GroundPosition
     {
         get;
         private set;
     }
     public Vector2 Velocity => m_rb.velocity;
+    public float CinematicVelocity;
 
     [Header("Components")]
     [SerializeField] private PlayerHealth m_playerHealth;
@@ -53,6 +54,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (CinematicManager.Instance != null)
+        {
+            if (CinematicManager.Instance.IsPlaying)
+            {
+                m_forward = CinematicVelocity;
+                return;
+            }
+        }
+
         if (!CanMove())
         {
             m_rb.velocity = Vector3.zero;
@@ -93,8 +103,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool CanMove()
     {
-        var canMove = !m_playerHealth.Dead;
-        return canMove;
+        var isAlive = !m_playerHealth.Dead;
+        return isAlive;
     }
 
     private EJumpState CanJump()
@@ -172,10 +182,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (m_forward != 0f)
+        var forward = (int) m_forward;
+        if (forward != 0)
         {
             m_rb.velocity = new Vector2(m_forward * m_speed, m_rb.velocity.y);
-            Direction = (int) m_forward;
+            Direction = forward;
         }
         else
         {

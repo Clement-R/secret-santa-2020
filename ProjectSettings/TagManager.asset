@@ -53,6 +53,9 @@ TagManager:
   - name: Player
     uniqueID: 2209240487
     locked: 0
+  - name: Shadow
+    uniqueID: 3820112591
+    locked: 0
   - name: Floor
     uniqueID: 3472025601
     locked: 0

@@ -70,6 +70,14 @@ public class CameraBehaviour : MonoBehaviour
 
     void LateUpdate()
     {
+        if (CinematicManager.Instance != null)
+        {
+            if (CinematicManager.Instance.IsPlaying)
+            {
+                return;
+            }
+        }
+
         if (m_player != null)
         {
             FollowPlayer();
