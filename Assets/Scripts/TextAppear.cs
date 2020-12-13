@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,29 +20,26 @@ public class TextAppear : MonoBehaviour
 
     public void PlayEffect(string p_text)
     {
-        m_tmpText.text = p_text;
-        StartCoroutine(_RevealCharacters(m_tmpText));
+        StartCoroutine(_RevealCharacters(m_tmpText, p_text));
     }
 
-    IEnumerator _RevealCharacters(TMP_Text textComponent)
+    IEnumerator _RevealCharacters(TMP_Text textComponent, string p_text)
     {
-        textComponent.ForceMeshUpdate();
-
-        var text = m_tmpText.text;
         textComponent.text = string.Empty;
+        textComponent.ForceMeshUpdate();
 
         int index = 0;
 
-        while (index < text.Length)
+        while (index < p_text.Length)
         {
-            if (text[index] == '<')
+            if (p_text[index] == '<')
             {
-                textComponent.text += $"<{text[index+1]}{text[index+2]}>";
+                textComponent.text += $"<{p_text[index+1]}{p_text[index+2]}>";
                 index += 4;
                 continue;
             }
 
-            textComponent.text += text[index];
+            textComponent.text += p_text[index];
 
             index += 1;
             OnLetterAppear?.Invoke();
@@ -50,7 +48,27 @@ public class TextAppear : MonoBehaviour
         }
 
         yield return new WaitForSeconds(m_delayBeforeClear);
+    }
 
-        m_tmpText.text = string.Empty;
+    [Header("Debug")]
+    [SerializeField] private string m_debugText;
+    [SerializeField] private float m_debugStart;
+    [ContextMenu("Debug text duration")]
+    private void DebugDuration()
+    {
+        var text = GetParsedText(m_debugText);
+        var duration = ((text.Length - 1) * m_revealDelay) + m_delayBeforeClear + 0.05f;
+
+        TimeSpan timeSpan = TimeSpan.FromSeconds(m_debugStart);
+        timeSpan = timeSpan.Add(TimeSpan.FromSeconds(duration));
+
+        Debug.Log($"Text length {text.Length}");
+        Debug.Log($"Text duration {duration}");
+        Debug.Log($"Text end {timeSpan}");
+    }
+
+    private string GetParsedText(string p_input)
+    {
+        return Regex.Replace(p_input, "<.*?>", String.Empty);
     }
 }
