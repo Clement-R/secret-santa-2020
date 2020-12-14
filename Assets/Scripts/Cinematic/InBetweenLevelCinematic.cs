@@ -48,9 +48,17 @@ public class InBetweenLevelCinematic : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        m_dialogPlayer = FindObjectOfType<DialogPlayer>();
-        m_dialogPlayer.PlayDialog(m_dialogs[m_index]);
-        m_index++;
+        if (m_index < m_dialogs.Length)
+        {
+            m_dialogPlayer = FindObjectOfType<DialogPlayer>();
+            m_dialogPlayer.PlayDialog(m_dialogs[m_index]);
+            m_index++;
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+
         m_sceneIndex++;
 
         while (m_dialogPlayer.IsPlaying)
@@ -60,7 +68,15 @@ public class InBetweenLevelCinematic : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        SceneLoader.Instance.LoadScene($"Level{m_sceneIndex}");
+        int sceneIndex = SceneUtility.GetBuildIndexByScenePath($"Scenes/Level{m_sceneIndex}");
+        if (sceneIndex >= 0)
+        {
+            SceneLoader.Instance.LoadScene($"Level{m_sceneIndex}");
+        }
+        else
+        {
+            SceneLoader.Instance.LoadScene($"Outro");
+        }
     }
 
     // private void SceneLoaded(Scene p_scene, LoadSceneMode p_sceneMode)
