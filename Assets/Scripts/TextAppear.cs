@@ -25,6 +25,8 @@ public class TextAppear : MonoBehaviour
 
     IEnumerator _RevealCharacters(TMP_Text textComponent, string p_text)
     {
+        IsTalking = true;
+
         textComponent.text = string.Empty;
         textComponent.ForceMeshUpdate();
 
@@ -49,6 +51,8 @@ public class TextAppear : MonoBehaviour
 
         yield return new WaitForSeconds(m_delayBeforeClear);
         textComponent.text = string.Empty;
+
+        IsTalking = false;
     }
 
     [Header("Debug")]

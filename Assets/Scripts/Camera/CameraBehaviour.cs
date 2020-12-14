@@ -43,10 +43,10 @@ public class CameraBehaviour : MonoBehaviour
         if (m_initialized)
             return;
 
-        DontDestroyOnLoad(gameObject);
-
         SceneManager.sceneLoaded += SceneLoaded;
         SceneManager.sceneUnloaded += SceneUnloaded;
+
+        m_initialized = true;
     }
 
     private void SceneLoaded(Scene p_scene, LoadSceneMode p_sceneMode)
