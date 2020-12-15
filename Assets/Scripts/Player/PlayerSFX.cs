@@ -24,6 +24,11 @@ public class PlayerSFX : MonoBehaviour
         LevelManager.Instance.OnRespawn += Respawn;
     }
 
+    private void OnDestroy()
+    {
+        LevelManager.Instance.OnRespawn -= Respawn;
+    }
+
     private void Respawn(Transform p_checkpoint)
     {
         SoundsManager.Instance.PlayOneShot(m_respawn);

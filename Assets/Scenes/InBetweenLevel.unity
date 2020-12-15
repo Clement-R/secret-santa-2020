@@ -843,6 +843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d829b685536799e4cabc02fef273f63f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_cameraPosition: {x: 0, y: 16, z: -16}
   m_dialogs:
   - {fileID: 11400000, guid: d4b421f8b1c58a242bdf8e1512947621, type: 2}
 --- !u!4 &2088209402

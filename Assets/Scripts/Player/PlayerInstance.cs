@@ -16,6 +16,5 @@ public class PlayerInstance : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 }

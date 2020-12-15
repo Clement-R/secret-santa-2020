@@ -11,6 +11,11 @@ public class PlayerRespawner : MonoBehaviour
         LevelManager.Instance.OnRespawn += Respawn;
     }
 
+    private void OnDestroy()
+    {
+        LevelManager.Instance.OnRespawn -= Respawn;
+    }
+
     private void Respawn(Transform p_checkpoint)
     {
         transform.position = p_checkpoint.position;
