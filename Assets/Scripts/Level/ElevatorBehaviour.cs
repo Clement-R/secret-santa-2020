@@ -121,5 +121,12 @@ public class ElevatorBehaviour : MonoBehaviour
                 Close();
             }
         }
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            m_player.transform.position = m_frontTrigger.transform.position;
+        }
+#endif
     }
 }
