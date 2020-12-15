@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public Vector2 Velocity => m_rb.velocity;
     public float CinematicVelocity;
+    public bool Grounded => m_grounded;
 
     [Header("Components")]
     [SerializeField] private PlayerHealth m_playerHealth;
