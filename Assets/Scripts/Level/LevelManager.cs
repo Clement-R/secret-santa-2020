@@ -23,23 +23,6 @@ public class LevelManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
-    private void Start()
-    {
-        SceneManager.sceneLoaded += SceneLoaded;
-        SceneManager.sceneUnloaded += SceneUnloaded;
-    }
-
-    private void SceneLoaded(Scene p_scene, LoadSceneMode p_sceneMode)
-    {
-
-    }
-
-    private void SceneUnloaded(Scene arg0)
-    {
-        m_traps.Clear();
     }
 
     public void RegisterTrap(Trap p_trap)
