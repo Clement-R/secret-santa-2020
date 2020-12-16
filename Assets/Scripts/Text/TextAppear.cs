@@ -72,6 +72,14 @@ public class TextAppear : MonoBehaviour
         Debug.Log($"Text end {timeSpan}");
     }
 
+    public float GetDebugDuration(string p_text)
+    {
+        var text = GetParsedText(p_text);
+        var duration = ((text.Length - 1) * m_revealDelay) + m_delayBeforeClear + 0.1f;
+
+        return duration;
+    }
+
     private string GetParsedText(string p_input)
     {
         return Regex.Replace(p_input, "<.*?>", String.Empty);

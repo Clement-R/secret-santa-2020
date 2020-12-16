@@ -15,6 +15,7 @@ public class DialogPlayer : MonoBehaviour
 
     [SerializeField] private TextAppear m_textAppear;
     [SerializeField] private SpriteRenderer m_dialogBox;
+    [SerializeField] private Vector2 m_dialogBoxSize = new Vector2(140f, 140f);
     [SerializeField] private float m_delayBetweenText = 0.1f;
 
     public void PlayDialog(Dialog p_dialog)
@@ -27,8 +28,7 @@ public class DialogPlayer : MonoBehaviour
         IsPlaying = true;
 
         // Show dialog box
-        var show = DOTween.To(() => m_dialogBox.size, x => m_dialogBox.size = x, new Vector2(140f, 140f), 1);
-
+        var show = DOTween.To(() => m_dialogBox.size, x => m_dialogBox.size = x, m_dialogBoxSize, 1);
         yield return show.WaitForCompletion();
 
         foreach (var text in p_dialog.Texts)
@@ -43,9 +43,23 @@ public class DialogPlayer : MonoBehaviour
         }
 
         // Hide dialog box
-        var hide = DOTween.To(() => m_dialogBox.size, x => m_dialogBox.size = x, new Vector2(0f, 0f), 1);
+        var hide = DOTween.To(() => m_dialogBox.size, x => m_dialogBox.size = x, Vector2.zero, 1);
         yield return hide.WaitForCompletion();
 
         IsPlaying = false;
+    }
+
+    [SerializeField] private Dialog m_debugDialog;
+    [ContextMenu("Get Length")]
+    private void GetDialogLength()
+    {
+        var duration = 2f; // Tweens duration
+        foreach (var text in m_debugDialog.Texts)
+        {
+            duration += m_textAppear.GetDebugDuration(text);
+            duration += m_delayBetweenText;
+        }
+
+        Debug.Log(duration);
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.Playables;
 
 using DG.Tweening;
 
@@ -12,6 +13,7 @@ public class PrisonDoorBehaviour : MonoBehaviour
     [SerializeField] private GameObject m_shadow;
     [SerializeField] private Vector3 m_finalPos;
     [SerializeField] private float m_seqInterval = 0.15f;
+    [SerializeField] private PlayableDirector m_director;
 
     private Sequence m_openSequence;
 
@@ -45,6 +47,8 @@ public class PrisonDoorBehaviour : MonoBehaviour
             {
                 CinematicManager.Instance.StopPlaying();
                 m_shadow.transform.position = m_finalPos;
+
+                m_director.Play();
             }
         );
 
