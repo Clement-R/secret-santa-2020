@@ -34,15 +34,45 @@ public class MainThemeManager : MonoBehaviour
     {
         if (p_scene.name == "InBetweenLevel")
         {
-            m_audioSource.volume = m_lowVolume;
+            Low();
         }
         else if (p_scene.name == "Intro" || p_scene.name == "Outro" || p_scene.name == "Level1")
         {
-            m_audioSource.Stop();
+            Stop();
         }
         else if (p_scene.name.Contains("Level"))
         {
-            m_audioSource.volume = m_volume;
+            Play();
         }
+        else if (p_scene.name.Contains("MainMenu"))
+        {
+            Play();
+        }
+    }
+
+    public void Play()
+    {
+        if (!m_audioSource.isPlaying)
+            m_audioSource.Play();
+
+        m_audioSource.UnPause();
+        m_audioSource.volume = m_volume;
+    }
+
+    public void Low()
+    {
+        if (!m_audioSource.isPlaying)
+            m_audioSource.Play();
+
+        m_audioSource.UnPause();
+        m_audioSource.volume = m_lowVolume;
+    }
+
+    public void Stop()
+    {
+        if (!m_audioSource.isPlaying)
+            m_audioSource.Play();
+
+        m_audioSource.Pause();
     }
 }

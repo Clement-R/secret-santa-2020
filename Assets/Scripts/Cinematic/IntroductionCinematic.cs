@@ -16,6 +16,11 @@ public class IntroductionCinematic : MonoBehaviour
     [SerializeField] private float m_jumpPower = 25f;
     [SerializeField] private float m_jumpDuration = 0.25f;
 
+    private void Start()
+    {
+        CameraBehaviour.Instance.transform.position = new Vector3(0f, 0f, -16f);
+    }
+
     public void ExclamationPoint()
     {
         var seq = DOTween.Sequence();

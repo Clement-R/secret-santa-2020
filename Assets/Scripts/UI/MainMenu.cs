@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
-
+        CameraBehaviour.Instance.transform.position = new Vector3(0f, 0f, -16f);
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {

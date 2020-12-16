@@ -18,6 +18,8 @@ public class FirstLevelCinematic : MonoBehaviour
 
     public void StartPlaying()
     {
+        MainThemeManager.Instance.Stop();
+
         CinematicManager.Instance.StartPlaying();
         Invoke("CameraReset", 0.25f);
     }
@@ -30,6 +32,7 @@ public class FirstLevelCinematic : MonoBehaviour
     public void StopPlaying()
     {
         CinematicManager.Instance.StopPlaying();
+        MainThemeManager.Instance.Play();
     }
 
     public void PlayDialog(Dialog p_dialog)
