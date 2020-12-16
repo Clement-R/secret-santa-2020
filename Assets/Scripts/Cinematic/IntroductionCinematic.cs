@@ -9,6 +9,7 @@ public class IntroductionCinematic : MonoBehaviour
 {
     [Header("Text effect")]
     [SerializeField] private TextAppear m_textAppear;
+    [SerializeField] private DialogPlayer m_dialogPlayer;
 
     [Header("Exclamation point")]
     [SerializeField] private GameObject m_exclamationPoint;
@@ -41,11 +42,13 @@ public class IntroductionCinematic : MonoBehaviour
                 m_exclamationPoint.SetActive(false);
             }
         );
+
+        seq.Play();
     }
 
-    public void PlayDialog(string p_text)
+    public void PlayDialog(Dialog p_dialog)
     {
-        m_textAppear.PlayEffect(p_text);
+        m_dialogPlayer.PlayDialog(p_dialog);
     }
 
     public void LoadGameScene()

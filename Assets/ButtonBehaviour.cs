@@ -23,6 +23,8 @@ public class ButtonBehaviour : MonoBehaviour
         m_button.transform.position = m_button.transform.position - Vector3.down * m_yDelta;
         m_down = true;
 
+        GetComponent<BoxCollider2D>().size = new Vector2(16f, 4f);
+
         m_door.Open();
     }
 }

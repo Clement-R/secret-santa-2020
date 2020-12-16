@@ -17,4 +17,9 @@ public class OutroCinematic : MonoBehaviour
     {
         m_dialogPlayer.PlayDialog(p_dialog);
     }
+
+    public void LoadMenuScene()
+    {
+        SceneLoader.Instance.LoadScene("MainMenu");
+    }
 }

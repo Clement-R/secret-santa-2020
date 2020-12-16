@@ -7,8 +7,8 @@ using UnityEngine.Timeline;
 
 public class FirstLevelCinematic : MonoBehaviour
 {
-    [Header("Text effect")]
-    [SerializeField] private TextAppear m_textAppear;
+    [SerializeField] private DialogPlayer m_dialogPlayer;
+
     private GameObject m_player;
 
     private void Start()
@@ -19,6 +19,12 @@ public class FirstLevelCinematic : MonoBehaviour
     public void StartPlaying()
     {
         CinematicManager.Instance.StartPlaying();
+        Invoke("CameraReset", 0.25f);
+    }
+
+    private void CameraReset()
+    {
+        CameraBehaviour.Instance.transform.position = new Vector3(0f, 16f, -16f);
     }
 
     public void StopPlaying()
@@ -26,8 +32,8 @@ public class FirstLevelCinematic : MonoBehaviour
         CinematicManager.Instance.StopPlaying();
     }
 
-    public void PlayDialog(string p_text)
+    public void PlayDialog(Dialog p_dialog)
     {
-        m_textAppear.PlayEffect(p_text);
+        m_dialogPlayer.PlayDialog(p_dialog);
     }
 }
