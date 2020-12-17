@@ -9,6 +9,7 @@ public class CameraBehaviour : MonoBehaviour
     public static CameraBehaviour Instance;
 
     [SerializeField] private GameObject m_player;
+    [SerializeField] private Transform m_camera;
     [SerializeField] private int m_tilesOffset = 5;
     [SerializeField] private string m_floorLayer = "Floor";
     [SerializeField] private float m_scrollDuration = 0.5f;
@@ -44,7 +45,6 @@ public class CameraBehaviour : MonoBehaviour
             return;
 
         SceneManager.sceneLoaded += SceneLoaded;
-        SceneManager.sceneUnloaded += SceneUnloaded;
 
         m_initialized = true;
     }
@@ -63,9 +63,11 @@ public class CameraBehaviour : MonoBehaviour
         }
     }
 
-    private void SceneUnloaded(Scene arg0)
+    // This function rounds to a multiple of pixel 
+    // screen value based on pixel per unit
+    private float RoundToMultiple(float value, float multipleOf)
     {
-
+        return (int) ((value / multipleOf) + 0.5f) * multipleOf;
     }
 
     void LateUpdate()
@@ -96,19 +98,27 @@ public class CameraBehaviour : MonoBehaviour
 
         var t = Mathf.Clamp01((Time.time - m_startScroll) / m_scrollDuration);
 
-        var x = Mathf.SmoothDamp(
-            transform.position.x,
-            m_player.transform.position.x,
-            ref m_velocity,
-            m_xSmoothTime,
-            m_xMaxSpeed
-        );
+        var multiple = 1.0f / 16f;
+        float tt = RoundToMultiple(m_xMaxSpeed * Time.deltaTime, multiple);
 
-        transform.position = new Vector3(
-            x,
-            Mathf.Lerp(transform.position.y, m_floorYPosition + m_heightOffset, t),
-            transform.position.z
-        );
+        var newPos = Vector3.Lerp(m_camera.transform.position, m_player.transform.position, tt);
+        var y = Mathf.Lerp(m_camera.transform.position.y, m_floorYPosition + m_heightOffset, tt);
+
+        m_camera.transform.position = new Vector3(newPos.x, y, m_camera.transform.position.z);
+
+        // var x = Mathf.SmoothDamp(
+        //     m_camera.transform.position.x,
+        //     m_player.transform.position.x,
+        //     ref m_velocity,
+        //     m_xSmoothTime,
+        //     m_xMaxSpeed
+        // );
+
+        // m_camera.transform.position = new Vector3(
+        //     x,
+        //     Mathf.Lerp(m_camera.transform.position.y, m_floorYPosition + m_heightOffset, t),
+        //     m_camera.transform.position.z
+        // );
     }
 
     private float GetFloor()

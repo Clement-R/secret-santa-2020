@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_player: {fileID: 0}
+  m_camera: {fileID: 869063937949789188}
   m_tilesOffset: 5
   m_floorLayer: Floor
   m_scrollDuration: 2
