@@ -62,6 +62,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 3225959946501343952, guid: ec42ad7ce165b4e48b41a017d6fb2959, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -13665283717844869, guid: ec42ad7ce165b4e48b41a017d6fb2959, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &114529943
@@ -76,6 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ccbd9cb9998a84f8e57f20be0e33f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_textAppear: {fileID: 0}
+  m_dialogPlayer: {fileID: 0}
   m_exclamationPoint: {fileID: 0}
   m_jumpPower: 25
   m_jumpDuration: 0.5

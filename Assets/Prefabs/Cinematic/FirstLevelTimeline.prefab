@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 621793292261441675}
   - component: {fileID: 621793292261441672}
   - component: {fileID: 621793292261441674}
-  - component: {fileID: 621793292261441685}
   m_Layer: 0
   m_Name: FirstLevelTimeline
   m_TagString: Untagged
@@ -53,11 +52,7 @@ PlayableDirector:
     value: {fileID: 621793292261441674}
   - key: {fileID: -1127199204444943562, guid: eeaf4177a38261b4c96af64b8ba266d0, type: 2}
     value: {fileID: 0}
-  - key: {fileID: 906380450528996661, guid: eeaf4177a38261b4c96af64b8ba266d0, type: 2}
-    value: {fileID: 0}
   - key: {fileID: 0}
-    value: {fileID: 0}
-  - key: {fileID: -3719545698889835635, guid: eeaf4177a38261b4c96af64b8ba266d0, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
@@ -73,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20530cdd360fb44d935c1a7d8e4fe7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_textAppear: {fileID: 0}
+  m_dialogPlayer: {fileID: 0}
 --- !u!114 &621793292261441674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,12 +85,12 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: 489c3d431866f7d41b736ab0d3cfcd67, type: 2}
     - {fileID: 11400000, guid: e05e8c61ba78dde47b6ac8915140ae7e, type: 2}
-    - {fileID: 11400000, guid: f3fdd41740df2f8499c6043dd326b031, type: 2}
+    - {fileID: 11400000, guid: 886952610ed5617428319fedb81875e8, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CinematicManager, Assembly-CSharp
+        - m_Target: {fileID: 621793292261441672}
+          m_TargetAssemblyTypeName: FirstLevelCinematic, Assembly-CSharp
           m_MethodName: StartPlaying
           m_Mode: 1
           m_Arguments:
@@ -108,8 +103,8 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CinematicManager, Assembly-CSharp
+        - m_Target: {fileID: 621793292261441672}
+          m_TargetAssemblyTypeName: FirstLevelCinematic, Assembly-CSharp
           m_MethodName: StopPlaying
           m_Mode: 1
           m_Arguments:
@@ -121,31 +116,14 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     - m_PersistentCalls:
-        m_Calls: []
---- !u!114 &621793292261441685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 621793292261441678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a265b6c253d2474d9a1096bc78e3a71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  signalAssetEventPairs:
-  - signalAsset: {fileID: 11400000, guid: f3fdd41740df2f8499c6043dd326b031, type: 2}
-    events:
-      m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 621793292261441672}
           m_TargetAssemblyTypeName: FirstLevelCinematic, Assembly-CSharp
           m_MethodName: PlayDialog
-          m_Mode: 0
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 11400000, guid: d8001d3171b18794b92680c5bb5a4ec5, type: 2}
+            m_ObjectArgumentAssemblyTypeName: Dialog, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
