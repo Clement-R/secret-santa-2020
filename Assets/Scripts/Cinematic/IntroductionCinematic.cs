@@ -16,22 +16,21 @@ public class IntroductionCinematic : MonoBehaviour
     [SerializeField] private float m_jumpPower = 25f;
     [SerializeField] private float m_jumpDuration = 0.25f;
 
+    private Sequence m_sequence;
+
     private void Start()
     {
         CameraBehaviour.Instance.transform.position = new Vector3(0f, 0f, -16f);
-    }
 
-    public void ExclamationPoint()
-    {
-        var seq = DOTween.Sequence();
+        m_sequence = DOTween.Sequence();
 
-        seq.AppendCallback(
+        m_sequence.AppendCallback(
             () =>
             {
                 m_exclamationPoint.SetActive(true);
             }
         );
-        seq.Append(
+        m_sequence.Append(
             m_exclamationPoint.transform.DOJump(
                 m_exclamationPoint.transform.position,
                 m_jumpPower,
@@ -40,15 +39,18 @@ public class IntroductionCinematic : MonoBehaviour
                 true
             )
         );
-        seq.AppendInterval(0.1f);
-        seq.AppendCallback(
+        m_sequence.AppendInterval(0.1f);
+        m_sequence.AppendCallback(
             () =>
             {
                 m_exclamationPoint.SetActive(false);
             }
         );
+    }
 
-        seq.Play();
+    public void ExclamationPoint()
+    {
+        m_sequence.Play();
     }
 
     public void PlayDialog(Dialog p_dialog)
