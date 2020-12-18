@@ -16,6 +16,7 @@ public class CameraBehaviour : MonoBehaviour
     [SerializeField] private int m_floorTileTolerance = 1;
     [SerializeField] private float m_xSmoothTime = 0.5f;
     [SerializeField] private float m_xMaxSpeed = 0.5f;
+    [SerializeField] private float m_speed = 0.5f;
 
     private bool m_initialized = false;
 
@@ -96,29 +97,19 @@ public class CameraBehaviour : MonoBehaviour
             m_startScroll = Time.time;
         }
 
-        var t = Mathf.Clamp01((Time.time - m_startScroll) / m_scrollDuration);
+        float t = RoundToMultiple(m_xMaxSpeed * Time.deltaTime, 1.0f / 16f);
 
-        var multiple = 1.0f / 16f;
-        float tt = RoundToMultiple(m_xMaxSpeed * Time.deltaTime, multiple);
+        var x = Mathf.SmoothDamp(
+            m_camera.transform.position.x,
+            m_player.transform.position.x,
+            ref m_velocity,
+            m_xSmoothTime,
+            m_xMaxSpeed
+        );
 
-        var newPos = Vector3.Lerp(m_camera.transform.position, m_player.transform.position, tt);
-        var y = Mathf.Lerp(m_camera.transform.position.y, m_floorYPosition + m_heightOffset, tt);
+        var y = Mathf.Lerp(m_camera.transform.position.y, m_floorYPosition + m_heightOffset, t);
 
-        m_camera.transform.position = new Vector3(newPos.x, y, m_camera.transform.position.z);
-
-        // var x = Mathf.SmoothDamp(
-        //     m_camera.transform.position.x,
-        //     m_player.transform.position.x,
-        //     ref m_velocity,
-        //     m_xSmoothTime,
-        //     m_xMaxSpeed
-        // );
-
-        // m_camera.transform.position = new Vector3(
-        //     x,
-        //     Mathf.Lerp(m_camera.transform.position.y, m_floorYPosition + m_heightOffset, t),
-        //     m_camera.transform.position.z
-        // );
+        m_camera.transform.position = new Vector3(x, y, m_camera.transform.position.z);
     }
 
     private float GetFloor()
