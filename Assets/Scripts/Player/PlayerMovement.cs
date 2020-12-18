@@ -55,6 +55,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        // Check if grounded
+        var grounded = IsGrounded();
+        if (m_grounded != grounded)
+        {
+            m_grounded = grounded;
+
+            if (Falling)
+            {
+                OnLand?.Invoke();
+            }
+        }
+
+        if (m_grounded)
+        {
+            m_lastGrounded = Time.time;
+        }
+
+        // Check if playing cinematic
         if (CinematicManager.Instance != null)
         {
             if (CinematicManager.Instance.IsPlaying)
@@ -78,23 +96,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         GetInputs();
-
-        // Check if grounded
-        var grounded = IsGrounded();
-        if (m_grounded != grounded)
-        {
-            m_grounded = grounded;
-
-            if (Falling)
-            {
-                OnLand?.Invoke();
-            }
-        }
-
-        if (m_grounded)
-        {
-            m_lastGrounded = Time.time;
-        }
 
         if (m_debug)
         {
