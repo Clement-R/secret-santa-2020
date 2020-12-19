@@ -846,6 +846,8 @@ MonoBehaviour:
   m_cameraPosition: {x: 0, y: 16, z: -16}
   m_dialogs:
   - {fileID: 11400000, guid: d4b421f8b1c58a242bdf8e1512947621, type: 2}
+  - {fileID: 11400000, guid: 068b348b2e64d664ba7fa08a722b2a16, type: 2}
+  - {fileID: 11400000, guid: 720542d925d0c0748972fa9847af6247, type: 2}
 --- !u!4 &2088209402
 Transform:
   m_ObjectHideFlags: 0
