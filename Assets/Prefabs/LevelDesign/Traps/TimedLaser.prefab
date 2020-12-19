@@ -101,8 +101,8 @@ MonoBehaviour:
   m_offsetDuration: 0
   m_activeDuration: 2
   m_previewDuration: 0.5
-  m_laserSprite: {fileID: 21300000, guid: 76ab522768cbe864b9fb32ebbad81d93, type: 3}
-  m_laserPreviewSprite: {fileID: 21300000, guid: 76ab522768cbe864b9fb32ebbad81d93, type: 3}
+  m_laserSprite: {fileID: 21300000, guid: 22e580f55b5b0ba44b994ad3de9b1368, type: 3}
+  m_laserPreviewSprite: {fileID: 21300000, guid: 0e6c5ade93e901c4487acdc9e46d3dba, type: 3}
   m_laserPreviewSFX: {fileID: 11400000, guid: 19c403f3ef4106741ba17d5e5d99cccf, type: 2}
   m_laserActivateSFX: {fileID: 11400000, guid: 2c47725f09cb0fe45bac29d1f987e627, type: 2}
   m_endPoint: {x: 0, y: 0, z: 0}

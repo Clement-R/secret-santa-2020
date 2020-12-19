@@ -108,19 +108,19 @@ public class TimedLaserBehaviour : ActivationTrap
 
     void Update()
     {
-        if (Time.time > m_nextActivation - m_previewDuration)
+        if (Time.time >= m_lastActivation + m_activeDuration)
+        {
+            Deactivate();
+        }
+
+        if (Time.time >= m_nextActivation - m_previewDuration)
         {
             PreActivate();
         }
 
-        if (Time.time > m_nextActivation)
+        if (Time.time >= m_nextActivation)
         {
             Activate();
-        }
-
-        if (Time.time > m_lastActivation + m_activeDuration)
-        {
-            Deactivate();
         }
     }
 
@@ -136,7 +136,7 @@ public class TimedLaserBehaviour : ActivationTrap
         m_lasers.ForEach(s => s.sprite = m_laserSprite);
 
         m_lastActivation = Time.time;
-        m_nextActivation = m_lastActivation + m_activeDuration + m_delayDuration;
+        m_nextActivation = m_lastActivation + m_delayDuration;
     }
 
     protected override void Deactivate(bool p_silent = false)
